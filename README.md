@@ -1,4 +1,5 @@
 # pangu
+[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/coldnew/pangu.clj/master/LICENSE)
 [![Circle CI](https://circleci.com/gh/coldnew/pangu.clj.svg?style=svg)](https://circleci.com/gh/coldnew/pangu.clj)
 [![Dependencies Status](https://jarkeeper.com/coldnew/pangu.clj/status.svg)](https://jarkeeper.com/coldnew/pangu.clj)
 [![Downloads](https://jarkeeper.com/coldnew/pangu.clj/downloads.svg)](https://jarkeeper.com/coldnew/pangu.clj)
@@ -11,7 +12,6 @@ FIXME
 
 ## License
 
-Copyright © 2016 FIXME
+Copyright © 2016 Yen-Chin, Lee <<coldnew.tw@gmail.com>>
 
-Distributed under the Eclipse Public License either version 1.0 or (at
-your option) any later version.
+Distributed under the MIT License.
