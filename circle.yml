@@ -28,6 +28,7 @@ dependencies:
 test:
   override:
     - ./lein spec
+    - ./lein cljsbuild test
 
 deployment:
   publish:
