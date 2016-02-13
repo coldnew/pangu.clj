@@ -1,0 +1,26 @@
+general:
+  branches:
+    ignore:
+      - gh-pages
+
+machine:
+  timezone: Asia/Taipei
+  java:
+    version: oraclejdk8
+
+dependencies:
+  pre:
+    - wget -O lein https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein
+    - chmod 755 lein
+    - ./boot -v
+    - ./lein deps
+  cache_directories:
+    - node_modules
+    - resources/bower_components
+    - $HOME/.m2
+    - $HOME/.lein
+    - $HOME/bin
+
+test:
+  override:
+    - ./lein spec
