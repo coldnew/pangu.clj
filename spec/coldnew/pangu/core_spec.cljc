@@ -1,7 +1,9 @@
 (ns coldnew.pangu.core-spec
-  (:require [speclj.core :refer :all]
-            [speclj.run.standard]
-            [coldnew.pangu.core :refer :all]))
+  (#?(:clj  :require
+      :cljs :require-macros)
+   [speclj.core :refer [describe it should should-not]])
+  (:require [speclj.run.standard :refer [run-specs]]
+            [coldnew.pangu.core :refer [spacing]]))
 
 ;; helper function
 (defn- verify [str1 str2]
@@ -275,3 +277,5 @@
      (vs "前面……後面" "前面…… 後面")
      ;; \u2027
      (vs "前面‧後面" "前面 ‧ 後面")))
+
+(run-specs)

@@ -82,7 +82,7 @@
     (str/replace str RE "$1 $2")))
 
 
-(defn spacing [str]
+(defn ^:export spacing [str]
   (->> str
        ;; quote
        cjk-quote
