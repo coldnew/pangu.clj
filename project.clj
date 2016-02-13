@@ -25,7 +25,7 @@
                               :notify-command ["phantomjs" "bin/speclj" "target/pangu.js"]}
                        :prod {:source-paths  ["src"]
                               :compiler      {:output-to "target/pangu.js"
-                                              :optimizations :simple}}}
+                                              :optimizations :advanced}}}
               :test-commands {"test" ["phantomjs"  "bin/speclj" "target/pangu.js"]}}
 
   :codox {:source-uri "https://github.com/coldnew/pangu.clj/blob/master/{filepath}#L{line}"})
