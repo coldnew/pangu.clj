@@ -24,8 +24,9 @@
     (str/replace str RE "$1 $2")))
 
 (defn- fix-quote [str]
-  (let [RE (re-pattern "([\"'\\(\\[\\{<\u201c]+)(\\s*)(.+?)(\\s*)([\"'\\)\\]\\}>\u201d]+)")]
+  (let [RE #"([\"'])(\s*)(.+?)(\s*)([\"'])"]
     (str/replace str RE "$1$3$5")))
+
 
 (defn- fix-single-quote [str]
   (let [RE #"([\u2e80-\u2eff\u2f00-\u2fdf\u3040-\u309f\u30a0-\u30ff\u3100-\u312f\u3200-\u32ff\u3400-\u4dbf\u4e00-\u9fff\uf900-\ufaff])( )(')([A-Za-z])"]
@@ -100,3 +101,9 @@
        ;; spacing-ans
        cjk-ans
        ans-cjk))
+
+(defn- vs [s1 s2]
+  (= (spacing s1) s2))
+
+(vs "前面\"中文123漢字\" tail" "前面 \"中文 123 漢字 tail")
+(spacing "前面\"中文123漢字\" tail" )

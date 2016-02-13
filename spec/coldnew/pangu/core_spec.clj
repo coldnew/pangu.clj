@@ -48,7 +48,7 @@
      (vs "abcア123" "abc ア 123")
      (vs "abc ア 123" "abc ア 123"))
 
- (it "Bopomofo"
+ (it "處理 注音符號 (Bopomofo)"
      (vs "abcㄅ123" "abc ㄅ 123")
      (vs "abc ㄅ 123" "abc ㄅ 123"))
 
@@ -67,31 +67,34 @@
      (vs "abc車123" "abc 車 123")
      (vs "abc 車 123" "abc 車 123"))
 
- (it "Tilde"
+ (it "處理 ~ 符號 (tilde)"
      (vs "前面~後面" "前面~ 後面")
      (vs "前面 ~ 後面" "前面 ~ 後面")
      (vs "前面~ 後面" "前面~ 後面"))
 
- (it "Back Quote"
+ (it "處理 ` 符號 (back quote)"
      (vs "前面`後面" "前面 ` 後面")
      (vs "前面 ` 後面" "前面 ` 後面")
      (vs "前面` 後面" "前面 ` 後面"))
 
- (it "Exclamation Mark"
+ (it "處理 ! 符號 (exclamation mark)"
      (vs "前面!後面" "前面! 後面")
      (vs "前面 ! 後面" "前面 ! 後面")
      (vs "前面! 後面" "前面! 後面"))
 
- (it "At"
+ (it "處理 @ 符號 (at)"
      ;; https://twitter.com/vinta
      (vs "前面@vinta後面" "前面 @vinta 後面")
      (vs "前面 @vinta 後面" "前面 @vinta 後面")
      ;; http://weibo.com/vintalines
      (vs "前面@陳上進 後面" "前面 @陳上進 後面")
      (vs "前面 @陳上進 後面" "前面 @陳上進 後面")
-     (vs "前面 @陳上進tail" "前面 @陳上進 tail"))
+     (vs "前面 @陳上進tail" "前面 @陳上進 tail")
+     ;; kmt-fu*k
+     (vs "請@KMT吃大便" "請 @KMT 吃大便")
+     (vs "請@馬英九 吃大便" "請 @馬英九 吃大便"))
 
- (it "Hash"
+ (it "處理 # 符號 (hash)"
      (vs "前面#H2G2後面" "前面 #H2G2 後面")
      (vs "前面#銀河便車指南 後面" "前面 #銀河便車指南 後面")
      (vs "前面#銀河便車指南tail" "前面 #銀河便車指南 tail")
@@ -99,21 +102,22 @@
      (vs "前面#H2G2#後面" "前面 #H2G2# 後面")
      (vs "前面#銀河閃電霹靂車指南#後面" "前面 #銀河閃電霹靂車指南# 後面"))
 
- (it "Dollar"
+ (it "處理 $ 符號 (dollar)"
      (vs "前面$後面" "前面 $ 後面")
      (vs "前面 $ 後面" "前面 $ 後面")
      (vs "前面$100後面" "前面 $100 後面"))
 
- (it "Percent"
+ (it "處理 % 符號 (percent)"
      (vs "前面%後面" "前面 % 後面")
      (vs "前面 % 後面" "前面 % 後面")
      (vs "前面100%後面" "前面 100% 後面"))
 
- (it "Caret"
+ (it "處理 ^ 符號 (caret)"
      (vs "前面^後面" "前面 ^ 後面")
-     (vs "前面 ^ 後面" "前面 ^ 後面"))
+     (vs "前面 ^ 後面" "前面 ^ 後面")
+     (vs "2^10" "2^10"))
 
- (it "Ampersand"
+ (it "處理 & 符號 (ampersand)"
      (vs "前面&後面" "前面 & 後面")
      (vs "前面 & 後面" "前面 & 後面")
      (vs "Vinta&Mollie" "Vinta&Mollie")
@@ -121,7 +125,7 @@
      (vs "陳上進&Vinta" "陳上進 & Vinta")
      (vs "得到一個A&B的結果" "得到一個 A&B 的結果"))
 
- (it "Asterisk"
+ (it "處理 * 符號 (asterisk)"
      (vs "前面*後面" "前面 * 後面")
      (vs "前面 * 後面" "前面 * 後面")
      (vs "Vinta*Mollie" "Vinta*Mollie")
@@ -130,7 +134,7 @@
      (vs "得到一個A*B的結果" "得到一個 A*B 的結果"))
 
 
- (it "Parentheses"
+ (it "處理 ( ) 符號 (parentheses)"
      (vs "前面(中文123漢字)後面" "前面 (中文 123 漢字) 後面")
      (vs "前面(中文123)後面" "前面 (中文 123) 後面")
      (vs "前面(123漢字)後面" "前面 (123 漢字) 後面")
@@ -138,7 +142,7 @@
      (vs "head (中文123漢字)後面" "head (中文 123 漢字) 後面")
      (vs "head (中文123漢字) tail" "head (中文 123 漢字) tail"))
 
- (it "Minus"
+ (it "處理 - 符號 (minus)"
      (vs "前面-後面" "前面 - 後面")
      (vs "前面 - 後面" "前面 - 後面")
      (vs "Vinta-Mollie" "Vinta-Mollie")
@@ -146,11 +150,11 @@
      (vs "陳上進-Vinta" "陳上進 - Vinta")
      (vs "得到一個A-B的結果" "得到一個 A-B 的結果"))
 
- (it "Underscore"
+ (it "處理 _ 符號 (underscore)"
      (vs "前面_後面" "前面_後面")
      (vs "前面 _ 後面" "前面 _ 後面"))
 
- (it "Plus"
+ (it "處理 + 符號 (plus)"
      (vs "前面+後面" "前面 + 後面")
      (vs "前面 + 後面" "前面 + 後面")
      (vs "Vinta+Mollie" "Vinta+Mollie")
@@ -159,7 +163,7 @@
      (vs "得到一個A+B的結果" "得到一個 A+B 的結果")
      (vs "得到一個C++的結果" "得到一個 C++ 的結果"))
 
- (it "Equal"
+ (it "處理 = 符號 (equal)"
      (vs "前面=後面" "前面 = 後面")
      (vs "前面 = 後面" "前面 = 後面")
      (vs "Vinta=Mollie" "Vinta=Mollie")
@@ -167,7 +171,7 @@
      (vs "陳上進=Vinta" "陳上進 = Vinta")
      (vs "得到一個A=B的結果" "得到一個 A=B 的結果"))
 
- (it "Braces"
+ (it "處理 { } 符號 (braces)"
      (vs "前面{中文123漢字}後面" "前面 {中文 123 漢字} 後面")
      (vs "前面{中文123}後面" "前面 {中文 123} 後面")
      (vs "前面{123漢字}後面" "前面 {123 漢字} 後面")
@@ -175,7 +179,7 @@
      (vs "head {中文123漢字}後面" "head {中文 123 漢字} 後面")
      (vs "head {中文123漢字} tail" "head {中文 123 漢字} tail"))
 
- (it "Brackets"
+ (it "處理 [ ] 符號 (brackets)"
      (vs "前面[中文123漢字]後面" "前面 [中文 123 漢字] 後面")
      (vs "前面[中文123]後面" "前面 [中文 123] 後面")
      (vs "前面[123漢字]後面" "前面 [123 漢字] 後面")
@@ -183,7 +187,7 @@
      (vs "head [中文123漢字]後面" "head [中文 123 漢字] 後面")
      (vs "head [中文123漢字] tail" "head [中文 123 漢字] tail"))
 
- (it "Pipe"
+ (it "處理 | 符號 (pipe)"
      (vs "前面|後面" "前面 | 後面")
      (vs "前面 | 後面" "前面 | 後面")
      (vs "Vinta|Mollie" "Vinta|Mollie")
@@ -191,28 +195,28 @@
      (vs "陳上進|Vinta" "陳上進 | Vinta")
      (vs "得到一個A|B的結果" "得到一個 A|B 的結果"))
 
- (it "Backslash"
+ (it "處理 \\ 符號 (backslash)"
      (vs "前面\\後面" "前面 \\ 後面")
      (vs "前面 \\ 後面" "前面 \\ 後面"))
 
- (it "Colon"
+ (it "處理 : 符號 (colon)"
      (vs "前面:後面" "前面: 後面")
      (vs "前面 : 後面" "前面 : 後面")
      (vs "前面: 後面" "前面: 後面"))
 
- (it "Semicolon"
+ (it "處理 ; 符號 (semicolon)"
      (vs "前面;後面" "前面; 後面")
      (vs "前面 ; 後面" "前面 ; 後面")
      (vs "前面; 後面" "前面; 後面"))
 
- (it "Quote"
+ (it "處理 \" \" 符號 (quote)"
      (vs "前面\"中文123漢字\"後面" "前面 \"中文 123 漢字\" 後面")
      (vs "前面\"123漢字\"後面" "前面 \"123 漢字\" 後面")
-     (vs "前面\"中文123漢字 tail" "前面 \"中文 123 漢字 tail")
+     (vs "前面\"中文123漢字\" tail" "前面 \"中文 123 漢字\" tail")
      (vs "head \"中文123漢字\"後面" "head \"中文 123 漢字\" 後面")
      (vs "head \"中文123漢字\" tail" "head \"中文 123 漢字\" tail"))
 
- (it "Single Quote"
+ (it "處理 ' 符號 (single quote)"
      (vs "前面 '中文 123 漢字' 後面" "前面'中文123漢字'後面")
      (vs "前面 '中文 123' 後面" "前面'中文123'後面")
      (vs "前面 '123 漢字' 後面" "前面'123漢字'後面")
@@ -221,12 +225,12 @@
      (vs "head '中文 123 漢字' tail" "head '中文123漢字' tail")
      (vs "陳上進 likes 林依諾's status." "陳上進 likes 林依諾's status."))
 
- (it "Comma"
+ (it "處理 ; 符號 (comma)"
      (vs "前面,後面" "前面, 後面")
      (vs "前面 , 後面" "前面 , 後面")
      (vs "前面, 後面" "前面, 後面"))
 
- (it "Less than"
+ (it "處理 < 符號 (less than)"
      (vs "前面<後面" "前面 < 後面")
      (vs "前面 < 後面" "前面 < 後面")
      (vs "Vinta<Mollie" "Vinta<Mollie")
@@ -234,7 +238,7 @@
      (vs "陳上進<Vinta" "陳上進 < Vinta")
      (vs "得到一個A<B的結果" "得到一個 A<B 的結果"))
 
- (it "Greater than"
+ (it "處理 > 符號 (greater than)"
      (vs "前面>後面" "前面 > 後面")
      (vs "前面 > 後面" "前面 > 後面")
      (vs "Vinta>Mollie" "Vinta>Mollie")
@@ -242,7 +246,7 @@
      (vs "陳上進>Vinta" "陳上進 > Vinta")
      (vs "得到一個A>B的結果" "得到一個 A>B 的結果"))
 
- (it "Less and Greater than"
+ (it "處理 < > 符號 (less and greater than)"
      (vs "前面<中文123漢字>後面" "前面 <中文 123 漢字> 後面")
      (vs "前面<中文123>後面" "前面 <中文 123> 後面")
      (vs "前面<123漢字>後面" "前面 <123 漢字> 後面")
@@ -250,17 +254,17 @@
      (vs "head <中文123漢字>後面" "head <中文 123 漢字> 後面")
      (vs "head <中文123漢字> tail" "head <中文 123 漢字> tail"))
 
- (it "Period"
+ (it "處理 . 符號 (period)"
      (vs "前面.後面" "前面. 後面")
      (vs "前面 . 後面" "前面 . 後面")
      (vs "前面. 後面" "前面. 後面"))
 
- (it "Question Mark"
+ (it "處理 ? 符號 (question mark)"
      (vs "前面?後面" "前面? 後面")
      (vs "前面 ? 後面" "前面 ? 後面")
      (vs "前面? 後面" "前面? 後面"))
 
- (it "Slash"
+ (it "處理 / 符號 (slash)"
      (vs "前面/後面" "前面 / 後面")
      (vs "前面 / 後面" "前面 / 後面")
      (vs "Vinta/Mollie" "Vinta/Mollie")
@@ -268,7 +272,7 @@
      (vs "陳上進/Vinta" "陳上進 / Vinta")
      (vs "得到一個A/B的結果" "得到一個 A/B 的結果"))
 
- (it "Special characters"
+ (it "處理特殊字元 (special characters)"
      ;; \u201c and \u201d
      (vs "前面“中文123漢字”後面" "前面 “中文 123 漢字” 後面")
      ;; \u2026
