@@ -12,7 +12,7 @@ dependencies:
   pre:
     - wget -O lein https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein
     - chmod 755 lein
-    - ./boot -v
+    - ./lein -v
     - ./lein deps
   cache_directories:
     - node_modules
