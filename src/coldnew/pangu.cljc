@@ -1,7 +1,7 @@
 (ns coldnew.pangu
   (:require [coldnew.pangu.impl :as impl]))
 
-(defn ^:export spacing
+(defn spacing
   "Performs a paranoid text spacing on str."
   [str]
   (->> str
