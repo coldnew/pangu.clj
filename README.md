@@ -18,10 +18,14 @@ This library is designed for **both** Clojure/ClojureSript, you need minimal clo
 
 ## Usage
 
-FIXME
+```clojure
+(ns pangu-test.core
+  (:require [coldnew.pangu :as pangu]))
 
-## For Developer
+(defn -main []
+  (println (pangu/spacing "請問Jackie的鼻子有幾個？123個！"))) ; => "請問 Jackie 的鼻子有幾個？123 個！"
 
+```
 
 ## License
 
