@@ -1,9 +1,9 @@
-(ns coldnew.pangu.core-spec
+(ns coldnew.pangu-spec
   (#?(:clj  :require
       :cljs :require-macros)
    [speclj.core :refer [describe it should should-not]])
   (:require [speclj.run.standard :refer [run-specs]]
-            [coldnew.pangu.core :refer [spacing]]))
+            [coldnew.pangu :refer [spacing]]))
 
 ;; helper function
 (defn- verify [str1 str2]

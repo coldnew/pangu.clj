@@ -1,6 +1,5 @@
-(ns coldnew.pangu.core
+(ns coldnew.pangu.impl
   (:require [clojure.string :as str]))
-
 
 ;; \u2e80-\u2eff CJK Radicals Supplement
 ;; \u2f00-\u2fdf Kangxi Radicals
@@ -14,6 +13,9 @@
 ;;
 ;; http://unicode-table.com/en/
 ;; https://github.com/vinta/pangu
+
+;;;; Quote
+;; 
 
 (defn- cjk-quote [str]
   (let [RE #"([\u2e80-\u2eff\u2f00-\u2fdf\u3040-\u309f\u30a0-\u30ff\u3100-\u312f\u3200-\u32ff\u3400-\u4dbf\u4e00-\u9fff\uf900-\ufaff])([\"])"]
@@ -31,6 +33,16 @@
   (let [RE #"([\u2e80-\u2eff\u2f00-\u2fdf\u3040-\u309f\u30a0-\u30ff\u3100-\u312f\u3200-\u32ff\u3400-\u4dbf\u4e00-\u9fff\uf900-\ufaff])( )(')([A-Za-z])"]
     (str/replace str RE "$1$3$4")))
 
+(defn spacing-quote [str]
+  (->> str
+       cjk-quote
+       quote-cjk
+       fix-quote
+       fix-single-quote))
+
+;;;; Hash
+;; 
+
 (defn- cjk-hash [str]
   (let [RE #"([\u2e80-\u2eff\u2f00-\u2fdf\u3040-\u309f\u30a0-\u30ff\u3100-\u312f\u3200-\u32ff\u3400-\u4dbf\u4e00-\u9fff\uf900-\ufaff])(#(\S+))"]
     (str/replace str RE "$1 $2")))
@@ -39,6 +51,14 @@
   (let [RE #"((\S+)#)([\u2e80-\u2eff\u2f00-\u2fdf\u3040-\u309f\u30a0-\u30ff\u3100-\u312f\u3200-\u32ff\u3400-\u4dbf\u4e00-\u9fff\uf900-\ufaff])"]
     (str/replace str RE "$1 $3")))
 
+(defn spacing-hash [str]
+  (->> str
+       cjk-hash
+       hash-cjk))
+
+;;;; Operator
+;; 
+
 (defn- cjk-operator-ans [str]
   (let [RE #"([\u2e80-\u2eff\u2f00-\u2fdf\u3040-\u309f\u30a0-\u30ff\u3100-\u312f\u3200-\u32ff\u3400-\u4dbf\u4e00-\u9fff\uf900-\ufaff])([\+\-\\*/=&\\\|<>])([A-Za-z0-9])"]
     (str/replace str RE "$1 $2 $3")))
@@ -46,6 +66,14 @@
 (defn- ans-operator-cjk [str]
   (let [RE #"([A-Za-z0-9])([\+\-\\*/=&\\\|<>])([\u2e80-\u2eff\u2f00-\u2fdf\u3040-\u309f\u30a0-\u30ff\u3100-\u312f\u3200-\u32ff\u3400-\u4dbf\u4e00-\u9fff\uf900-\ufaff])"]
     (str/replace str RE "$1 $2 $3")))
+
+(defn spacing-operator [str]
+  (->> str
+       cjk-operator-ans
+       ans-operator-cjk))
+
+;;;; Bracket
+;; 
 
 (defn- cjk-bracket-cjk [str]
   (let [RE #"([\u2e80-\u2eff\u2f00-\u2fdf\u3040-\u309f\u30a0-\u30ff\u3100-\u312f\u3200-\u32ff\u3400-\u4dbf\u4e00-\u9fff\uf900-\ufaff])([\(\[\{<\u201c]+(.*?)[\)\]\}>\u201d]+)([\u2e80-\u2eff\u2f00-\u2fdf\u3040-\u309f\u30a0-\u30ff\u3100-\u312f\u3200-\u32ff\u3400-\u4dbf\u4e00-\u9fff\uf900-\ufaff])"]
@@ -68,10 +96,27 @@
   (let [RE #"([\<])(\s*)(.+?)(\s*)([\>])"]
     (str/replace str RE "$1$3$5")))
 
+(defn spacing-brackets [str]
+  (->> str
+       cjk-bracket-cjk
+       cjk-bracket
+       bracket-cjk
+       fix-bracket
+       fix-bracket-greater-and-lesser))
+
+;;;; Symbol
+;; 
+
 (defn- fix-symbol [str]
   (let [RE #"([\u2e80-\u2eff\u2f00-\u2fdf\u3040-\u309f\u30a0-\u30ff\u3100-\u312f\u3200-\u32ff\u3400-\u4dbf\u4e00-\u9fff\uf900-\ufaff])([~!;:,\.\?\u2026])([A-Za-z0-9])"]
     (str/replace str RE "$1$2 $3")))
 
+(defn spacing-symbol [str]
+  (->> str
+       fix-symbol))
+
+;;;; Ans
+;; 
 
 (defn- cjk-ans [str]
   (let [RE #"([\u2e80-\u2eff\u2f00-\u2fdf\u3040-\u309f\u30a0-\u30ff\u3100-\u312f\u3200-\u32ff\u3400-\u4dbf\u4e00-\u9fff\uf900-\ufaff])([A-Za-z0-9`\$%\^&\*\-=\+\\\|/@\u00a1-\u00ff\u2022\u2027\u2150-\u218f])"]
@@ -81,28 +126,7 @@
   (let [RE #"([A-Za-z0-9`~\$%\^&\*\-=\+\\\|/!;:,\.\?\u00a1-\u00ff\u2022\u2026\u2027\u2150-\u218f])([\u2e80-\u2eff\u2f00-\u2fdf\u3040-\u309f\u30a0-\u30ff\u3100-\u312f\u3200-\u32ff\u3400-\u4dbf\u4e00-\u9fff\uf900-\ufaff])"]
     (str/replace str RE "$1 $2")))
 
-
-(defn ^:export spacing [str]
+(defn spacing-ans [str]
   (->> str
-       ;; quote
-       cjk-quote
-       quote-cjk
-       fix-quote
-       fix-single-quote
-       ;; hash
-       cjk-hash
-       hash-cjk
-       ;; operator
-       cjk-operator-ans
-       ans-operator-cjk
-       ;; bracket
-       cjk-bracket-cjk
-       cjk-bracket
-       bracket-cjk
-       fix-bracket
-       fix-bracket-greater-and-lesser
-       ;; fixer
-       fix-symbol
-       ;; ans
        cjk-ans
        ans-cjk))

@@ -1,8 +1,13 @@
-(defproject pangu "0.1.0-SNAPSHOT"
+(defproject coldnew/pangu "0.1.0-SNAPSHOT"
   :description "Paranoid text spacing in Clojure/ClojureScript."
   :url "https://github.com/coldnew/pangu.clj"
   :license {:name "MIT License"
-            :url "https://github.com/coldnew/pangu.clj/blob/master/LICENSE"}
+            :url "https://github.com/coldnew/pangu.clj/blob/master/LICENSE"
+            :distribution :repo
+            :comments "Copyright 2016 Yen-Chin, Lee <coldnew> All Rights Reserved."}
+
+  :jar-exclusions [#"\.cljx|\.swp|\.swo|\.DS_Store"]
+
   :dependencies [[org.clojure/clojure "1.8.0"]
                  [org.clojure/clojurescript "1.7.228"]]
 
