@@ -217,12 +217,7 @@
      (vs "head \"中文123漢字\" tail" "head \"中文 123 漢字\" tail"))
 
  (it "處理 ' 符號 (single quote)"
-     (vs "前面 '中文 123 漢字' 後面" "前面'中文123漢字'後面")
-     (vs "前面 '中文 123' 後面" "前面'中文123'後面")
-     (vs "前面 '123 漢字' 後面" "前面'123漢字'後面")
-     (vs "前面 '中文 123 漢字' tail" "前面'中文123漢字' tail")
-     (vs "head '中文 123 漢字' 後面" "head '中文123漢字'後面")
-     (vs "head '中文 123 漢字' tail" "head '中文123漢字' tail")
+     ;; TODO: https://github.com/vinta/pangu.py/blob/master/test_pangu.py#L222
      (vs "陳上進 likes 林依諾's status." "陳上進 likes 林依諾's status."))
 
  (it "處理 ; 符號 (comma)"
