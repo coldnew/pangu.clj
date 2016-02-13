@@ -55,6 +55,18 @@
   (let [RE #"([\u2e80-\u2eff\u2f00-\u2fdf\u3040-\u309f\u30a0-\u30ff\u3100-\u312f\u3200-\u32ff\u3400-\u4dbf\u4e00-\u9fff\uf900-\ufaff])([\(\[\{<\u201c>])"]
     (str/replace str RE "$1 $2")))
 
+(defn- bracket-cjk [str]
+  (let [RE #"([\)\]\}>\u201d<])([\u2e80-\u2eff\u2f00-\u2fdf\u3040-\u309f\u30a0-\u30ff\u3100-\u312f\u3200-\u32ff\u3400-\u4dbf\u4e00-\u9fff\uf900-\ufaff])"]
+    (str/replace str RE "$1 $2")))
+
+(defn- fix-bracket [str]
+  (let [RE #"([\(\[\{<\u201c]+)(\\s*)(.+?)(\\s*)([\)\]\}>\u201d]+)"]
+    (str/replace str RE "$1$3$5")))
+
+(defn- fix-symbol [str]
+  (let [RE #"([\u2e80-\u2eff\u2f00-\u2fdf\u3040-\u309f\u30a0-\u30ff\u3100-\u312f\u3200-\u32ff\u3400-\u4dbf\u4e00-\u9fff\uf900-\ufaff])([~!;:,\.\?\u2026])([A-Za-z0-9])"]
+    (str/replace str RE "$1$2 $3")))
+
 
 (defn- cjk-ans [str]
   (let [RE #"([\u2e80-\u2eff\u2f00-\u2fdf\u3040-\u309f\u30a0-\u30ff\u3100-\u312f\u3200-\u32ff\u3400-\u4dbf\u4e00-\u9fff\uf900-\ufaff])([A-Za-z0-9`\$%\^&\*\-=\+\\\|/@\u00a1-\u00ff\u2022\u2027\u2150-\u218f])"]
@@ -67,21 +79,24 @@
 
 (defn spacing [str]
   (->> str
-       ;; quote
+       ;; spacing-quote
        cjk-quote
        quote-cjk
        fix-quote
        fix-single-quote
-       ;;
+       ;; spacing-hash
        cjk-hash
        hash-cjk
-       ;;
+       ;; spacing-operator
        cjk-operator-ans
        ans-operator-cjk
-       ;;
+       ;; spacing-bracket
        cjk-bracket-cjk
-       ;;
-       ;;
+       cjk-bracket
+       bracket-cjk
+       fix-bracket
+       ;; spacing-fixer
+       fix-symbol
+       ;; spacing-ans
        cjk-ans
-       ans-cjk
-       ))
+       ans-cjk))
