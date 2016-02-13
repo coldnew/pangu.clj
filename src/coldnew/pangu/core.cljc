@@ -39,12 +39,12 @@
   (let [RE #"((\\S+)#)([\u2e80-\u2eff\u2f00-\u2fdf\u3040-\u309f\u30a0-\u30ff\u3100-\u312f\u3200-\u32ff\u3400-\u4dbf\u4e00-\u9fff\uf900-\ufaff])"]
     (str/replace str RE "$1 $3")))
 
-(defn- cjk-operator [str]
-  (let [RE #"([\u2e80-\u2eff\u2f00-\u2fdf\u3040-\u309f\u30a0-\u30ff\u3100-\u312f\u3200-\u32ff\u3400-\u4dbf\u4e00-\u9fff\uf900-\ufaff])([\+-\\*/=&\\\\|<>])([A-Za-z0-9])"]
+(defn- cjk-operator-ans [str]
+  (let [RE #"([\u2e80-\u2eff\u2f00-\u2fdf\u3040-\u309f\u30a0-\u30ff\u3100-\u312f\u3200-\u32ff\u3400-\u4dbf\u4e00-\u9fff\uf900-\ufaff])([\+\-\\*/=&\\\|<>])([A-Za-z0-9])"]
     (str/replace str RE "$1 $2 $3")))
 
-(defn- operator-cjk [str]
-  (let [RE #"([A-Za-z0-9])([\+-\\*/=&\\\\|<>])([\u2e80-\u2eff\u2f00-\u2fdf\u3040-\u309f\u30a0-\u30ff\u3100-\u312f\u3200-\u32ff\u3400-\u4dbf\u4e00-\u9fff\uf900-\ufaff])"]
+(defn- ans-operator-cjk [str]
+  (let [RE #"([A-Za-z0-9])([\+\-\\*/=&\\\|<>])([\u2e80-\u2eff\u2f00-\u2fdf\u3040-\u309f\u30a0-\u30ff\u3100-\u312f\u3200-\u32ff\u3400-\u4dbf\u4e00-\u9fff\uf900-\ufaff])"]
     (str/replace str RE "$1 $2 $3")))
 
 (defn- cjk-bracket-cjk [str]
@@ -55,7 +55,14 @@
   (let [RE #"([\u2e80-\u2eff\u2f00-\u2fdf\u3040-\u309f\u30a0-\u30ff\u3100-\u312f\u3200-\u32ff\u3400-\u4dbf\u4e00-\u9fff\uf900-\ufaff])([\(\[\{<\u201c>])"]
     (str/replace str RE "$1 $2")))
 
-(str/replace "a+-*/ ( " #"\(" "A")
+
+(defn- cjk-ans [str]
+  (let [RE #"([\u2e80-\u2eff\u2f00-\u2fdf\u3040-\u309f\u30a0-\u30ff\u3100-\u312f\u3200-\u32ff\u3400-\u4dbf\u4e00-\u9fff\uf900-\ufaff])([A-Za-z0-9`\$%\^&\*\-=\+\\\|/@\u00a1-\u00ff\u2022\u2027\u2150-\u218f])"]
+    (str/replace str RE "$1 $2")))
+
+(defn- ans-cjk [str]
+  (let [RE #"([A-Za-z0-9`~\$%\^&\*\-=\+\\\|/!;:,\.\?\u00a1-\u00ff\u2022\u2026\u2027\u2150-\u218f])([\u2e80-\u2eff\u2f00-\u2fdf\u3040-\u309f\u30a0-\u30ff\u3100-\u312f\u3200-\u32ff\u3400-\u4dbf\u4e00-\u9fff\uf900-\ufaff])"]
+    (str/replace str RE "$1 $2")))
 
 
 (defn spacing [str]
@@ -69,11 +76,12 @@
        cjk-hash
        hash-cjk
        ;;
-       cjk-operator
-       operator-cjk
+       cjk-operator-ans
+       ans-operator-cjk
        ;;
        cjk-bracket-cjk
+       ;;
+       ;;
+       cjk-ans
+       ans-cjk
        ))
-
-;; (= (spacing "前面\"中文123漢字\"後面") "前面 \"中文 123 漢字\" 後面")
-(spacing "前面\"中文123漢字\"後面")
