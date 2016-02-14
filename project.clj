@@ -1,10 +1,9 @@
 (defproject coldnew/pangu "0.1.0-SNAPSHOT"
   :description "Paranoid text spacing in Clojure/ClojureScript."
+  :author "Yen-Chin, Lee"
   :url "https://github.com/coldnew/pangu.clj"
   :license {:name "MIT License"
-            :url "https://github.com/coldnew/pangu.clj/blob/master/LICENSE"
-            :distribution :repo
-            :comments "Copyright 2016 Yen-Chin, Lee <coldnew> All Rights Reserved."}
+            :url "https://github.com/coldnew/pangu.clj/blob/master/LICENSE"}
 
   :jar-exclusions [#"\.cljx|\.swp|\.swo|\.DS_Store"]
 
@@ -27,5 +26,7 @@
                               :compiler      {:output-to "target/pangu.js"
                                               :optimizations :advanced}}}
               :test-commands {"test" ["phantomjs"  "bin/speclj" "target/pangu.js"]}}
+
+  :deploy-repositories [["releases" :clojars]]
 
   :codox {:source-uri "https://github.com/coldnew/pangu.clj/blob/master/{filepath}#L{line}"})
