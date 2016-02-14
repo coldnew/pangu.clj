@@ -8,13 +8,8 @@ Paranoid text spacing for good readability, to automatically insert whitespace b
 
 This library is designed for **both** Clojure/ClojureSript, you need minimal clojure version **1.7.0**
 
-* [pangu.go](https://github.com/vinta/pangu) (Go)
-* [pangu.java](https://github.com/vinta/pangu.java) (Java)
-* [pangu.js](https://github.com/vinta/paranoid-auto-spacing) (JavaScript, both Node.js and Browser)
-* [pangu.py](https://github.com/vinta/pangu.py) (Python)
-* [pangu.rb](https://github.com/dlackty/pangu.rb) (Ruby)
-* [pangu.objective-c](https://github.com/Cee/pangu.objective-c) (Objective-C)
-* [pangu.php](https://github.com/Kunr/pangu.php) (PHP)
+[![Clojars Project](http://clojars.org/coldnew/pangu/latest-version.svg)](http://clojars.org/coldnew/pangu)
+
 
 ## Usage
 
@@ -26,6 +21,18 @@ This library is designed for **both** Clojure/ClojureSript, you need minimal clo
   (println (pangu/spacing "請問Jackie的鼻子有幾個？123個！"))) ; => "請問 Jackie 的鼻子有幾個？123 個！"
 
 ```
+
+## Related Projects
+
+[paranoid-auto-spacing](https://github.com/vinta/pangu.js) has been porting to many different languages:
+
+* [pangu.js](https://github.com/vinta/pangu.js) (JavaScript, both Node.js and Browser)
+* [pangu.go](https://github.com/vinta/pangu) (Go)
+* [pangu.java](https://github.com/vinta/pangu.java) (Java)
+* [pangu.py](https://github.com/vinta/pangu.py) (Python)
+* [pangu.rb](https://github.com/dlackty/pangu.rb) (Ruby)
+* [pangu.objective-c](https://github.com/Cee/pangu.objective-c) (Objective-C)
+* [pangu.php](https://github.com/Kunr/pangu.php) (PHP)
 
 ## License
 
