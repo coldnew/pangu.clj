@@ -36,4 +36,4 @@ This library is designed for **both** Clojure/ClojureSript, you need minimal clo
 
 Copyright © 2016 Yen-Chin, Lee <<coldnew.tw@gmail.com>>
 
-Distributed under the MIT License.
+Distributed under the [MIT License](http://opensource.org/licenses/MIT).
