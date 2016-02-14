@@ -1,4 +1,4 @@
-(defproject coldnew/pangu "0.1.0-SNAPSHOT"
+(defproject coldnew/pangu "1.0.0"
   :description "Paranoid text spacing in Clojure/ClojureScript."
   :author "Yen-Chin, Lee"
   :url "https://github.com/coldnew/pangu.clj"
