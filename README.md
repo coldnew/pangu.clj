@@ -1,6 +1,5 @@
 # Pangu.clj
 [![Circle CI](https://circleci.com/gh/coldnew/pangu.clj.svg?style=svg)](https://circleci.com/gh/coldnew/pangu.clj)
-[![Dependencies Status](https://jarkeeper.com/coldnew/pangu.clj/status.svg)](https://jarkeeper.com/coldnew/pangu.clj)
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/coldnew/pangu.clj/master/LICENSE)
 
 
