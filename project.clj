@@ -5,7 +5,7 @@
   :license {:name "MIT License"
             :url "https://github.com/coldnew/pangu.clj/blob/master/LICENSE"}
 
-  :signing {:gpg-key "01D59AAF"}
+  :signing {:gpg-key "C079AE25"}
 
   :jar-exclusions [#"\.cljx|\.swp|\.swo|\.DS_Store"]
 
