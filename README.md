@@ -6,10 +6,11 @@
 
 Paranoid text spacing for good readability, to automatically insert whitespace between CJK (Chinese, Japanese, Korean), half-width English, digit and symbol characters.
 
-This library is designed for **both** Clojure/ClojureSript, you need minimal clojure version **1.7.0**
+This library is designed for **both** Clojure/ClojureSript, you need minimal clojure version **1.7.0**.
 
 [![Clojars Project](http://clojars.org/coldnew/pangu/latest-version.svg)](http://clojars.org/coldnew/pangu)
 
+For documens please see [here](http://coldnew.github.io/pangu.clj/).
 
 ## Usage
 
@@ -23,8 +24,6 @@ This library is designed for **both** Clojure/ClojureSript, you need minimal clo
 ```
 
 ## Related Projects
-
-[paranoid-auto-spacing](https://github.com/vinta/pangu.js) has been porting to many different languages:
 
 * [pangu.js](https://github.com/vinta/pangu.js) (JavaScript, both Node.js and Browser)
 * [pangu.go](https://github.com/vinta/pangu) (Go)
