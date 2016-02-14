@@ -10,7 +10,7 @@ This library is designed for **both** Clojure/ClojureSript, you need minimal clo
 
 [![Clojars Project](http://clojars.org/coldnew/pangu/latest-version.svg)](http://clojars.org/coldnew/pangu)
 
-[Latest codox API docs](http://coldnew.github.io/pangu.clj/).
+[Latest codox API docs](https://coldnew.github.io/pangu.clj/).
 
 ## Usage
 
