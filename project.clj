@@ -5,6 +5,8 @@
   :license {:name "MIT License"
             :url "https://github.com/coldnew/pangu.clj/blob/master/LICENSE"}
 
+  :signing {:gpg-key "01D59AAF"}
+
   :jar-exclusions [#"\.cljx|\.swp|\.swo|\.DS_Store"]
 
   :dependencies [[org.clojure/clojure "1.8.0"]
