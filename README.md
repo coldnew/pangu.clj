@@ -1,8 +1,8 @@
 # Pangu.clj
-[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/coldnew/pangu.clj/master/LICENSE)
 [![Circle CI](https://circleci.com/gh/coldnew/pangu.clj.svg?style=svg)](https://circleci.com/gh/coldnew/pangu.clj)
 [![Dependencies Status](https://jarkeeper.com/coldnew/pangu.clj/status.svg)](https://jarkeeper.com/coldnew/pangu.clj)
-[![Downloads](https://jarkeeper.com/coldnew/pangu.clj/downloads.svg)](https://jarkeeper.com/coldnew/pangu.clj)
+[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/coldnew/pangu.clj/master/LICENSE)
+
 
 Paranoid text spacing for good readability, to automatically insert whitespace between CJK (Chinese, Japanese, Korean), half-width English, digit and symbol characters.
 
@@ -10,7 +10,7 @@ This library is designed for **both** Clojure/ClojureSript, you need minimal clo
 
 [![Clojars Project](http://clojars.org/coldnew/pangu/latest-version.svg)](http://clojars.org/coldnew/pangu)
 
-For documens please see [here](http://coldnew.github.io/pangu.clj/).
+[Latest codox API docs](http://coldnew.github.io/pangu.clj/).
 
 ## Usage
 
