@@ -9,7 +9,7 @@
 
   :jar-exclusions [#"\.cljx|\.swp|\.swo|\.DS_Store"]
 
-  :dependencies [[org.clojure/clojure "1.8.0"]
+  :dependencies [[org.clojure/clojure "1.7.0"]
                  [org.clojure/clojurescript "1.7.228"]]
 
   :source-paths ["src"]
