@@ -5,11 +5,16 @@
 
 Paranoid text spacing for good readability, to automatically insert whitespace between CJK (Chinese, Japanese, Korean), half-width English, digit and symbol characters.
 
-This library is designed for **both** Clojure/ClojureSript, you need minimal clojure version **1.7.0**.
-
 [![Clojars Project](http://clojars.org/coldnew/pangu/latest-version.svg)](http://clojars.org/coldnew/pangu)
 
 [Latest codox API docs](https://coldnew.github.io/pangu.clj/).
+
+## Dependencies
+
+This library is designed for **both** Clojure/ClojureSript, you need following minimal version:
+
+* Clojure 1.7.0 ↑
+* ClojureScript 1.7.0 ↑
 
 ## Usage
 
@@ -20,6 +25,20 @@ This library is designed for **both** Clojure/ClojureSript, you need minimal clo
 (defn -main []
   (println (pangu/spacing "請問Jackie的鼻子有幾個？123個！"))) ; => "請問 Jackie 的鼻子有幾個？123 個！"
 
+```
+
+## Testing
+
+This library test with [speclj](https://github.com/slagyr/speclj), to test with Clojure, use following command:
+
+```
+$ lein spec
+```
+
+If you want to test in ClojureScript, use below
+
+```
+$ lein cljsbuild test
 ```
 
 ## Related Projects
