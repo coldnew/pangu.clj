@@ -31,6 +31,7 @@ This library is designed for **both** Clojure/ClojureSript, you need minimal clo
 * [pangu.rb](https://github.com/dlackty/pangu.rb) (Ruby)
 * [pangu.objective-c](https://github.com/Cee/pangu.objective-c) (Objective-C)
 * [pangu.php](https://github.com/Kunr/pangu.php) (PHP)
+* [pangu.ex](https://github.com/cataska/pangu.ex) (Elixir)
 
 ## License
 
