@@ -1,14 +1,21 @@
 # pangu-test
 
-A Clojure library designed to ... well, that part is up to you.
+This is a simple example to test [pangu.clj](https://github.com/coldnew/pangu.cl) in Clojure/ClojureScript.
 
-## Usage
+## Usage (Clojure)
 
-FIXME
+```
+lein run -m pangu-test.core
+```
+## Usage (ClojureScript on Node.js)
+
+```
+lein cljsbuild once
+node target/pangu-test.js
+```
 
 ## License
 
-Copyright © 2016 FIXME
+Copyright © 2016 Yen-Chin, Lee <<coldnew.tw@gmail.com>>
 
-Distributed under the Eclipse Public License either version 1.0 or (at
-your option) any later version.
+Distributed under the [MIT License](http://opensource.org/licenses/MIT).
